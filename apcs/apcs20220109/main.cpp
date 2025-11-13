@@ -7,8 +7,10 @@ int main() {
     bool b = true;
     cin >> n >> d >> x;
     n--;
+
     while(n--){
         cin >> y;
+        
         if(!b && y<=x-d){
             x = y;
             b = true;
