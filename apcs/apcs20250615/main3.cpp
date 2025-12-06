@@ -1,38 +1,25 @@
 #include<bits/stdc++.h>
+#define int long long
 using namespace std;
 
-int main(){
+signed main(){
 
+    ios::sync_with_stdio(0);
+    cin.tie(0), cout.tie(0);
     int n, t, ans = 0;
     cin >> n >> t;
-    vector<int> arr(n);
-    for(int i = 0;i < n;i++){
-        cin >> arr[i];
-    }
-    bool c = true;
-    while(c){
-        c = false;
-        int i = 0, nm = INT_MAX;
-        for(int l = 0;l < n;l++){
-            if(nm > arr[l] && t >= arr[l] && arr[l] > 0){
-                c = true;
-                i = l;
-                nm = arr[i];
-            }
+    vector<int> sand;
+    while(n--){
+        int s;
+        cin >> s;
+        while (!sand.empty() && sand.back() <= s) {
+            ans += sand.back();
+            s += sand.back();
+            sand.pop_back();
         }
-        // cout << endl;
-        if(!c) break;
-        int ni = i;
-        for(int l = ni+1;l < n;l++) {
-            if(arr[l] && arr[l] != 0) {
-                ni = l;
-                break;
-            }
-        }
-        if(ni < n && ni != i) arr[ni] += arr[i];
-        ans += arr[i];
-        arr[i] = 0;
+        if(s <= t) sand.push_back(s);
     }
+    for(auto it : sand) ans += it;
     cout << ans;
 
     return 0;

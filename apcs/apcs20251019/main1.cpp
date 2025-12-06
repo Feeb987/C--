@@ -7,6 +7,7 @@ int main(){
 
     int r, c, d, di, ro;
     cin >> r >> c >> d;
+    // 2 2 4
     int mnd = d, mxd = 0;
     pair<int, int> m[r][c];
     for(int i = 0;i < r;i++) for(int l = 0;l < c;l++) m[i][l].de = d;
@@ -23,12 +24,16 @@ int main(){
         bool hd = false;
         cin >> y >> x >> s >> d;
         s /= 2;
+
+
         for(int i = y-s;i <= y+s;i++){
             for(int l = x-s;l <= x+s;l++){
                 if(i < 0 || l < 0 || i >= r || l >= c) continue;
                 if(m[i][l].dii > 0) di -= m[i][l].dii, m[i][l].dii = 0, hd = true;
             }
         }
+
+
         if(!hd){
             for(int i = y-s;i <= y+s;i++){
                 for(int l = x-s;l <= x+s;l++){
@@ -38,6 +43,7 @@ int main(){
                 }
             }
         }
+
     }
     for(int i = 0;i < r;i++) for(int l = 0;l < c;l++) mxd = max(mxd, m[i][l].de);
     
@@ -46,3 +52,21 @@ int main(){
     return 0;
     
 } 
+/*
+
+[0][1][1][1] y = 0
+[0][1][*][1] y = 1
+[0][1][1][1] y = 2
+[0][0][0][0]
+
+1 2 3 4
+3 /= 2
+1
+
+0 1
+0 1
+
+array 6
+[][][][][][]
+0 1 2 3 4 5
+*/
