@@ -3,21 +3,18 @@ using namespace std;
 
 int main(){
 
-    map<int, int, greater<int> > arr;
-    int in, m = 1;
+    map<int, int> m;
+    set<int> s;
+    int mx = 0;
     for(int i = 0;i < 3;i++){
+        int in;
         cin >> in;
-        if(!arr.count(in)) arr[in] = 1;
-        else{
-            arr[in]++;
-            m = max(arr[in], m);
-        }
+        m[in]++;
+        mx = max(mx, m[in]);
+        s.insert(in);
     }
-    cout << m << " ";
-    for(auto p : arr){
-        cout << p.first << " ";
-    }
-    cout << endl;
+    cout << mx << " ";
+    for(auto it = s.rbegin();it != s.rend();it++) cout << *it << " ";
 
     return 0;
 
